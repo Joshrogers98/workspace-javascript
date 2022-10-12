@@ -129,7 +129,13 @@
             <script>
                 function calculate() {
                     var n1 = parseInt(document.getElementsByName('num1')[0].value);
+                    if(Number.isNaN(Number.parseFloat(n1))){
+                        window.alert('Please enter a number')
+                    }
                     var n2 = parseInt(document.getElementsByName('num2')[0].value);
+                    if(Number.isNaN(Number.parseFloat(n2))){
+                        window.alert('Please enter a number')
+                    }
                     //debug
                     console.log("n1="+n1)
                     //output
@@ -167,11 +173,12 @@
             <script>
                 //event handler
                 function welcomeMessage(){
-                    window.alert("working");
+                    var name = document.getElementById('cName').value;
+                    document.getElementById('message').innerHTML="Welcome <b>"+name+"</b>!";
                 }
                 //event -> event handler
                 var fE= document.getElementById('cName'); //input text box
-                fE.addEventListener('blur',welcomeMessage,false);
+                fE.addEventListener('blur',welcomeMessage,true);
                 </script>
 
         </div>
@@ -180,7 +187,21 @@
             <h1> Practice - Calculate Square</h1>
             Calculating Square:
             <input type="text" id="num" placeholder="Type in a number"> <sup> 2 </sup> =
-            <label id="result"> ? </label>
+            <label id="result1"> ? </label>
+            <script>
+                //event handler
+                function squaring(){
+                var numE = document.getElementById('num').value;
+                var ansSq = parseFloat(numE) * parseFloat(numE);
+                document.getElementById('result1').innerHTML=ansSq.toFixed(2);
+                }
+
+                //event -> event handler
+                var numE = document.getElementById('num');
+                numE.addEventListener('blur',squaring,true);
+
+
+            </script>
 
         </div>
 
@@ -194,8 +215,25 @@
 
             <input type="button" id="tryit" value="Click and Display"> 
 
-            <div id="message"> 
+            <div id="message1"> 
             </div>
+            <script>
+
+                //validating 
+                /*<img src="/" onerror="alert('haha');">
+<img src="/" onerror="for(i=1; i<=4; i++){
+alert('haha');}">*/
+
+                //event handler
+                function tohtml(){
+                    var tryCode = document.getElementById('code').value;
+                    document.getElementById('message1').innerHTML = tryCode;
+                }
+
+                //event -> event handle
+                var buttonElement = document.getElementById('tryit');
+                buttonElement.addEventListener('click',tohtml,false);
+            </script>
 
 
         </div>
