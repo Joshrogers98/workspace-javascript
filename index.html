@@ -258,6 +258,32 @@ alert('haha');}">*/
 
             <script type="text/javascript">
 
+                //event handler
+                function getPrice(){
+                    var yearCar = document.getElementById('year').value;
+                    var condCar = document.getElementById('condition').value;
+                    var price = 0;
+                    if (yearCar == '2003'){
+                        if(condCar == 'Good'){
+                        price = 5000;
+                        }
+                        if (condCar == 'Fair'){
+                        price = 4500 
+                        }
+                    }
+                    else if (yearCar == '2004'){
+                        if(condCar == 'Good'){
+                        price = 5500;
+                        }
+                        if (condCar == 'Fair'){
+                        price = 4700;
+                        }
+                    }
+                    document.getElementById('price').textContent = price.toString();
+                }
+                //event
+                document.getElementById('year').addEventListener('change',getPrice,false);
+                document.querySelector('#condition').addEventListener('change',getPrice,false);
 
 
             </script>
@@ -266,10 +292,46 @@ alert('haha');}">*/
 
         <div class="practice">
             <h1> Decision Statement - Switch</h1>
-            <p> Choose your favorite theme(warm, cool, hot)
+            <p> Choose your favorite theme(warm, cool, hot, cold, dark)
                 <input type="text" id="theme">
             </p>
+            <script>
+                //event handler
+                function changeTheme(){
+                    let theme = document.getElementById('theme').value;
+                    let bcolor = "white";
+                    
+                    switch (theme) {
+                        case "warm":
+                            bcolor = "orange";
+                            break;
+                        case "cool":
+                            bcolor = "purple";
+                            break;
+                        case "hot":
+                            bcolor = "red"
+                            break;
+                        case "cold":
+                            bcolor = "blue"
+                            break;
+                        case "dark":
+                            bcolor = "black";
+                            break;
+                        default:
+                            bcolor = "white";
+                            break;
+                    }
 
+                    /* Old Way:
+                    document.body.style.backgroundColor = bcolor
+                    */
+                   //new way
+                   document.body.setAttribute('style',"background-color: "+bcolor);
+
+                }
+                //event
+                document.getElementById('theme').addEventListener('blur',changeTheme,false);
+            </script>
         </div>
 
 
@@ -298,6 +360,17 @@ alert('haha');}">*/
             <p id="result">
 
             </p>
+            <script>
+                //event handler
+                function getPremium(){
+                    var covered = document.querySelector('input[name="coverage"]:checked');
+                    var coverage = parseInt(covered.value);
+                    console.log(coverage);
+                }
+                //event
+                var insuranceButton = document.querySelector('input[value="Check Premium"]');
+                insuranceButton.addEventListener('click',getPremium,false);
+            </script>
 
         </div>
 
