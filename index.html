@@ -338,12 +338,18 @@ alert('haha');}">*/
 
         <div class="practice">
             <h1> Switch practice -- Insurance Application</h1>
-            <p> Choose your coverage
+            <p id="play"> Choose your coverage
                 <input type="radio" name="coverage" value="100000">100000
                 <input type="radio" name="coverage" value="200000">200000
                 <input type="radio" name="coverage" value="300000">300000
 
             </p>
+            <script>
+                function animatePlay(){
+                    var selectedRadio = document.querySelector('input')
+                }
+                document.getElementById('play')
+            </script>
             <p> Choose your age group.
                 <select id="agegroup">
                     <option> under 30 </option>
@@ -357,7 +363,7 @@ alert('haha');}">*/
             <p>
                 <input type="button" value="Check Premium">
             </p>
-            <p id="result">
+            <p id="insurancepremium">
 
             </p>
             <script>
@@ -366,10 +372,56 @@ alert('haha');}">*/
                     var covered = document.querySelector('input[name="coverage"]:checked');
                     var coverage = parseInt(covered.value);
                     console.log(coverage);
+                    var ageindex = document.getElementById('agegroup').selectedIndex;
+                    console.log(ageindex);
+
+                    let agefactor = 0;
+                    switch (ageindex) {
+                        case 0:
+                            agefactor = .08;
+                            break;
+                        case 1:
+                            agefactor = .09;
+                            break;
+                        case 2: 
+                            agefactor = .11;
+                            break;
+                        case 3: 
+                            agefactor = .17;
+                            break;
+                        case 4: 
+                            agefactor = .29;
+                            break;
+                        case 5: 
+                            agefactor = .48;
+                            break;
+                        case 6: 
+                            agefactor = .75;
+                            break;
+                        case 7:
+                            agefactor = 1.17;
+                            break;
+                        default:
+                            agefactor = 0;
+                            break;
+                    }
+                    console.log(agefactor);
+                    let base = 10;
+                    var premium = base + agefactor*coverage/1000;
+                    console.log(premium);
+                    document.getElementById('insurancepremium').textContent = "Your estimated premium is: $" + premium;
+                    if(ageindex == 0){
+                    document.getElementById('play').animate([{transform:'scale(0.2)'},{transform:'scale(1.5)'}],{duration:2000,fill:"forwards"});
+                    }else if(ageindex == 1){
+                        this.animate([{transform:'translate(0,0)'},{transform:'translate(500px,0'}],{duration:250,fill:"forwards"});
+                    }else if(ageindex == 2){
+                        this.animate([{transform:''}])
+                    }
                 }
                 //event
                 var insuranceButton = document.querySelector('input[value="Check Premium"]');
                 insuranceButton.addEventListener('click',getPremium,false);
+
             </script>
 
         </div>
@@ -381,9 +433,21 @@ alert('haha');}">*/
             <h1>For Loop Practice 1 </h1>
             <p> Display the square of numer 1... N </p>
             <p> N = <input type="number" min="1" max="10" id="inputnumber1"> </p>
-            <p>
-                <input type="button" value="Click for Square">
+            <p id="sqareresult">
+                <input type="button" id="dosquare" value="Click for Square">
             </p>
+            <script>
+                function dosum() {
+                    var sum = 0;
+                    var numN = parseInt(document.getElementById('inputnumber1').value);
+                    console.log(numN);
+                for(var i = 1; i < numN ; i++){
+                    document.getElementById('squareresult').textContent = i + "^2 = " + i*i;
+                }
+                }
+                //event listener
+                document.querySelector('#dosquare').addEventListener('click',dosum,false);
+            </script>
 
         </div>
 
