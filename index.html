@@ -434,22 +434,23 @@ alert('haha');}">*/
         <div class="practice">
             <h1>For Loop Practice 1 </h1>
             <p> Display the square of numer 1... N </p>
-            <p> N = <input type="number" min="1" max="10" id="inputnumber1"> </p>
-            <p id="sqareresult">
-                <input type="button" id="dosquare" value="Click for Square">
+            <p> N = <input type="number" min="1" max="10" id="inputnumber1" value="3"> </p>
+            <input type="button" id="dosquare" value="Click for Square">
+            <p id="squareresult">
             </p>
             <script>
                 function dosum() {
                     var sum = 0;
                     var numN = parseInt(document.getElementById('inputnumber1').value);
                     console.log(numN);
+                    var sqans = "Squares: "
                     for (var i = 1; i < numN; i++) {
-                        var sqans = Math.pow(i, 2);
-                        document.getElementById('squareresult').innerHTML = i + '^2 = ' + sqans;
+                        sqans += Math.pow(i, 2) + " , ";
+                        document.getElementById('squareresult').innerHTML += i + '^2 = ' + sqans;
                     }
                 }
                 //event listener
-                document.querySelector('#dosquare').addEventListener('click', dosum, false);
+                document.getElementById('dosquare').addEventListener('click', dosum, false);
             </script>
 
         </div>
@@ -541,12 +542,20 @@ alert('haha');}">*/
                     var num = Math.floor(Math.random()*6+1);
                     stats[num - 1]++;
                     document.getElementById('dice').setAttribute('src',"img/die"+num+".png");
-                    console.log(stats);
-                    for(var i = 0; i<=6; i++){
-                        if(i == num - 1){
-                            document.getElementById('r'+num).textContent = stats[num-1];
-                        }
+                    document.getElementById('r'+num).textContent = stats[num-1];                                        
+                    for(var i in stats){
+                        console.log(stats[i]);
                     }
+                    
+                    /*for(var v of stats){
+                        if(v == num - 1){
+                            document.getElementById('r'+num).textContent = stats[v-1];
+                        }
+                    }*/
+
+                    /*stats.forEach()
+                    */
+
                 }
                 document.getElementById('rollDice').addEventListener('click',changeImg,false);
             </script>
@@ -571,7 +580,24 @@ alert('haha');}">*/
                 <img src="img/usca5.jpg" alt="usca">
             </div>
             <script>
+                //Event Handler
+                var index = 0;
+                //static list
+                var listImg = document.querySelectorAll('.img-container-hide');
+                //listImg[0].setAttribute('class',"img-container");
+                function changePic(){
+                    var localImg = listImg;
+                    console.log(index);
+                    localImg[index].setAttribute('class','img-container');
+                    index++;
+                    
+                    if(index == 5){
+                        index =0;
+                    }
+                }
 
+                //Automatic Event
+                setInterval(changePic , 1000);
             </script>
 
 
@@ -624,9 +650,10 @@ alert('haha');}">*/
 
 
     </div>
+    <!--
     <script src="script.js"> </script>
     <script src="js/practice.js"></script>
-
+    -->
 
 </body>
 
