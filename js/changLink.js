@@ -6,8 +6,9 @@ $('a').each(function(){
     $(this).attr('href','https://www.usca.edu');    
 });
 $('img').each(function(){
-    $(this).prepend(attr('src','./img/'));
-})
+    var newlink ='./img/' + $(this).attr('src');
+    $(this).attr('src' , newlink);
+});
 
 
 });
