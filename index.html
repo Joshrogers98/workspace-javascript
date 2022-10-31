@@ -3,16 +3,41 @@
 <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/main-old.css">
     <!-- Jquery library   ---->
-    <script src="https://code.jquery.com/jquery-3.5.1.js"
+    <script src="https://code.jquery.com/jquery-3.5.1.js            "
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-
+    <script>
+        $(document).ready(function(){
+       /*     $('body').hide().fadeIn(3000);
+            $('h1').click(function(){
+                alert('you click h1');
+            });
+            $('h1').mouseout(function(){
+                $(this).slideDown();
+            });
+        });
+        */
+       $('p').hide();
+       $('h1').click(function(){
+        $(this).parent().children('p').slideToggle();
+       });
+       $('input').each(function(){
+        var theID = $(this).attr('id');
+        console.log(theID);
+       });
+       $('img').each(function(){
+        var imgNames = $(this).attr('src');
+        console.log(imgNames);
+       })
+    });
+    </script>
 
 </head>
 
 <body>
     <div class="wrapper">
+        
         <div class="panelLeft">
 
         </div>
@@ -103,7 +128,7 @@
             <p id="p2" onmouseover="moveit();"> Paragraph Number two </p>
             <p id="p3" ondrag="bopit();"> Paragraph Number three </p>
             <p>Please write JavaScript code to change the content of each paragraph.​
-            <p>
+            </p>
                 <script>
                     //event handler
                     function changeit() {
@@ -562,7 +587,7 @@ alert('haha');}">*/
         </div>
 
 
-        <div class="practice">
+        <!--<div class="practice">
             <h1> Array example - Image banner</h1>
             <div class="img-container-hide">
                 <img src="img/usca1.jpg" alt="usca" />
@@ -601,7 +626,7 @@ alert('haha');}">*/
             </script>
 
 
-        </div>
+        </div>-->
 
 
         <div class="practice">
